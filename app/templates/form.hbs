@@ -12,6 +12,21 @@ Trying out Form For
       {{f.textarea 'qux' label='Qux' autoCommit=false}}
 
     {{/form-for}}
+
+
+    <button {{action toggleErrors}}>Toggle Errors</button>
+  </div>
+
+  <div style="flex: 1">
+    {{#form-for model as |f|}}
+
+      {{f.text 'bar' label='Bar'}}
+
+      {{f.text 'baz' label='Baz does not auto commit' autoCommit=false}}
+
+      {{f.textarea 'qux' label='Qux' autoCommit=false}}
+
+    {{/form-for}}
   </div>
 
   <div style="flex: 1">

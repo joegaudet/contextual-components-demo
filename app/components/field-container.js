@@ -36,27 +36,29 @@ const FieldContainer = Ember.Component.extend({
 
   commit(){
     this.commitValue(this.get('key'), this.get('_value'));
+    this.set('isEditing', false);
   },
 
   cancel(){
     this.set('_value', this.get('value'));
+    this.set('isEditing', false);
   },
 
   init(...params){
     this._super(...params)
 
     const key = this.get('key');
-
-
-    let valuePath = `model.${key}`;
-    defineProperty(this, 'value', computed(valuePath, '_value', () => {
-      console.log('Foo');
-
-      return this.get(valuePath);
-    }));
+    defineProperty(this, 'value', computed.oneWay(`model.${key}`));
     defineProperty(this, 'errors', computed.oneWay(`model.errors.${key}`));
 
     this.set('_value', this.get('value'));
+  },
+
+
+  actions: {
+    edit(){
+      this.set('isEditing', true);
+    }
   }
 });
 
