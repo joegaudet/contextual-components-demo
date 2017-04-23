@@ -3,7 +3,21 @@
     <label>{{label}}</label>
   {{/if}}
 
-  {{component control value=value onChange=(action updateValue key)}}
+  {{component control
+              value=(readonly value)
+
+              onChange=(action handleChange)
+  }}
+
+
+  {{#unless autoCommits}}
+    {{#if dirty}}
+      <div class="commit-cancel">
+        <button type="button" {{action commit}}>Commit</button>
+        <button type="button" {{action cancel}}>Cancel</button>
+      </div>
+    {{/if}}
+  {{/unless}}
 
   <div class="errors">
     {{#each errors as |error|}}

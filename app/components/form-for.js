@@ -6,6 +6,8 @@ const {
 
 const FormFor = Ember.Component.extend({
 
+  tagName: '',
+
   model: null,
 
   updateValue(key, value){

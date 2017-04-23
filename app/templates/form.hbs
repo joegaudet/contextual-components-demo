@@ -7,9 +7,9 @@ Trying out Form For
 
       {{f.text 'bar' label='Bar'}}
 
-      {{f.text 'baz' label='Baz'}}
+      {{f.text 'baz' label='Baz does not auto commit' autoCommit=false}}
 
-      {{f.text 'qux' label='Qux'}}
+      {{f.textarea 'qux' label='Qux' autoCommit=false}}
 
     {{/form-for}}
   </div>

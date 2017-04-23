@@ -1,0 +1,9 @@
+.field {
+  margin-bottom: 0.5em;
+}
+
+.field label {
+  font-weight: bold;
+  display: block;
+}
+

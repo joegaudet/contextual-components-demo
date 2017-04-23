@@ -1,5 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: ''
+  tagName: '',
+
+  value: null,
+
+  onChange(){
+
+  }
+
 });
