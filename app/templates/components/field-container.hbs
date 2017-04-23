@@ -1,0 +1,14 @@
+<div class="field">
+  {{#if label}}
+    <label>{{label}}</label>
+  {{/if}}
+
+  {{component control value=value onChange=(action updateValue key)}}
+
+  <div class="errors">
+    {{#each errors as |error|}}
+      <div class="error">{{error}}</div>
+    {{/each}}
+  </div>
+</div>
+
