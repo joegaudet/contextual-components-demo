@@ -3,36 +3,23 @@
     <label>{{label}}</label>
   {{/if}}
 
-  {{#if autoCommit}}
 
-    {{component control
-                value=(readonly value)
+  {{component control
+              value=(readonly _value)
 
-                onChange=(action handleChange)
-    }}
+              onChange=(action handleChange)
+  }}
 
-  {{else}}
+  {{#unless autoCommit}}
 
-    {{#if isEditing}}
-      {{component control
-                  value=(readonly value)
-
-                  onChange=(action handleChange)
-      }}
+    {{#if dirty}}
       <div class="commit-cancel">
         <button type="button" {{action commit}}>✔</button>
         <button type="button" {{action cancel}}>✘</button>
       </div>
-    {{else}}
-      {{component control
-                  value=(readonly value)
-                  onFocus=(action 'edit')
-
-                  onChange=(action handleChange)
-      }}
     {{/if}}
 
-  {{/if}}
+  {{/unless}}
 
 
 

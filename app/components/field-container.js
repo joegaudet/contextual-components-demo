@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 const {
   defineProperty,
-  computed
+  computed,
+  observer
 } = Ember;
 
 const FieldContainer = Ember.Component.extend({
@@ -23,7 +24,9 @@ const FieldContainer = Ember.Component.extend({
     return this.get('_value') !== this.get('value');
   }),
 
-  commitValue(_key, _value) {},
+  commitValue(_key, _value) {
+  },
+
   handleChange(value) {
     this.set('_value', value);
 
@@ -34,13 +37,15 @@ const FieldContainer = Ember.Component.extend({
 
   commit(){
     this.commitValue(this.get('key'), this.get('_value'));
-    this.set('isEditing', false);
   },
 
   cancel(){
     this.set('_value', this.get('value'));
-    this.set('isEditing', false);
   },
+
+  valueDidChange: observer('value', function () {
+    this.set('_value', this.get('value'))
+  }),
 
   init(...params){
     this._super(...params)
@@ -56,8 +61,6 @@ const FieldContainer = Ember.Component.extend({
   actions: {
     edit(){
       this.set('isEditing', true);
-
-      return true;
     }
   }
 });

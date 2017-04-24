@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   value: null,
 
 
+  onClick(){},
 
   onFocus(){},
 
