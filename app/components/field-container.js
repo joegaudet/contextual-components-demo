@@ -43,20 +43,21 @@ const FieldContainer = Ember.Component.extend({
     this.set('_value', this.get('value'));
   },
 
-  valueDidChange: observer('value', function () {
-    this.set('_value', this.get('value'))
-  }),
-
   init(...params){
-    this._super(...params)
+    this._super(...params);
 
     const key = this.get('key');
     defineProperty(this, 'value', computed.oneWay(`model.${key}`));
     defineProperty(this, 'errors', computed.oneWay(`model.errors.${key}`));
-
-    this.set('_value', this.get('value'));
+    defineProperty(this, '_value', computed(`model.${key}`, {
+      get() {
+        return this.get(`model.${key}`);
+      },
+      set(key, value) {
+        return value;
+      }
+    }));
   },
-
 
   actions: {
     edit(){
