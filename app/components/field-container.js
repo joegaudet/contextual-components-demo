@@ -2,8 +2,7 @@ import Ember from 'ember';
 
 const {
   defineProperty,
-  computed,
-  observer
+  computed
 } = Ember;
 
 const FieldContainer = Ember.Component.extend({
@@ -43,25 +42,22 @@ const FieldContainer = Ember.Component.extend({
     this.set('_value', this.get('value'));
   },
 
-  valueDidChange: observer('value', function () {
-    this.set('_value', this.get('value'))
-  }),
-
-  init(...params){
-    this._super(...params)
+  init(){
+    this._super(...arguments);
 
     const key = this.get('key');
-    defineProperty(this, 'value', computed.oneWay(`model.${key}`));
+
     defineProperty(this, 'errors', computed.oneWay(`model.errors.${key}`));
+    defineProperty(this, 'value', computed.oneWay(`model.${key}`));
 
-    this.set('_value', this.get('value'));
-  },
-
-
-  actions: {
-    edit(){
-      this.set('isEditing', true);
-    }
+    defineProperty(this, '_value', computed('value', {
+      get() {
+        return this.get('value');
+      },
+      set(key, value) {
+        return value;
+      }
+    }));
   }
 });
 

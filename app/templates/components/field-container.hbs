@@ -4,11 +4,22 @@
   {{/if}}
 
 
-  {{component control
-              value=(readonly _value)
+  {{#if hasBlock}}
+    {{yield (hash
+              control= (component control
+                value=(readonly _value)
 
-              onChange=(action handleChange)
-  }}
+                onChange=(action handleChange)
+              )
+            )
+    }}
+  {{else}}
+    {{component control
+                value=(readonly _value)
+
+                onChange=(action handleChange)
+    }}
+  {{/if}}
 
   {{#unless autoCommit}}
 
