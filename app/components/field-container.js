@@ -23,9 +23,7 @@ const FieldContainer = Ember.Component.extend({
     return this.get('_value') !== this.get('value');
   }),
 
-  commitValue(_key, _value) {
-  },
-
+  commitValue(_key, _value) {},
   handleChange(value) {
     this.set('_value', value);
 
@@ -58,6 +56,8 @@ const FieldContainer = Ember.Component.extend({
   actions: {
     edit(){
       this.set('isEditing', true);
+
+      return true;
     }
   }
 });

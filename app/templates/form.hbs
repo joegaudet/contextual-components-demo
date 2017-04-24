@@ -4,13 +4,13 @@ Trying out Form For
 <div style="display: flex">
   <div style="flex: 1">
     {{#form-for model as |f|}}
-
       {{f.text 'bar' label='Bar'}}
-
       {{f.text 'baz' label='Baz does not auto commit' autoCommit=false}}
-
       {{f.textarea 'qux' label='Qux' autoCommit=false}}
 
+      {{#f.save}}
+        Create
+      {{/f.save}}
     {{/form-for}}
 
 
@@ -25,6 +25,10 @@ Trying out Form For
       {{f.text 'baz' label='Baz does not auto commit' autoCommit=false}}
 
       {{f.textarea 'qux' label='Qux' autoCommit=false}}
+
+      {{#f.save}}
+        Create
+      {{/f.save}}
 
     {{/form-for}}
   </div>

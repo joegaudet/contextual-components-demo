@@ -20,13 +20,16 @@
                   onChange=(action handleChange)
       }}
       <div class="commit-cancel">
-        <button type="button" {{action commit}}>Commit</button>
-        <button type="button" {{action cancel}}>Cancel</button>
+        <button type="button" {{action commit}}>✔</button>
+        <button type="button" {{action cancel}}>✘</button>
       </div>
     {{else}}
-      <div class="value-container" {{action 'edit' on 'click'}}>
-        (click to edit) {{value}}
-      </div>
+      {{component control
+                  value=(readonly value)
+                  onFocus=(action 'edit')
+
+                  onChange=(action handleChange)
+      }}
     {{/if}}
 
   {{/if}}

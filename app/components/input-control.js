@@ -5,8 +5,12 @@ export default Ember.Component.extend({
 
   value: null,
 
-  onChange(){
 
-  }
+
+  onFocus(){},
+
+  onBlur(){},
+
+  onChange(value){}
 
 });
