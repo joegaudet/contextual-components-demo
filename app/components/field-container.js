@@ -50,9 +50,9 @@ const FieldContainer = Ember.Component.extend({
 
     defineProperty(this, 'errors', computed.oneWay(`model.errors.${key}`));
     defineProperty(this, 'value', computed.oneWay(`model.${key}`));
-    defineProperty(this, '_value', computed(`model.${key}`, {
+    defineProperty(this, '_value', computed('value', {
       get() {
-        return this.get(`model.${key}`);
+        return this.get('value');
       },
       set(key, value) {
         return value;
