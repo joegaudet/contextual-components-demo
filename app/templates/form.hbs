@@ -9,14 +9,7 @@ Trying out Form For
         {{t.control placeholder='Some Place Holder'}}
       {{/f.text}}
 
-      {{f.text 'baz' label='Baz does not auto commit' autoCommit=false}}
-      {{f.textarea 'qux' label='Qux' autoCommit=false}}
-
-      {{#f.save}}
-        Create
-      {{/f.save}}
     {{/form-for}}
-
 
     <button {{action toggleErrors}}>Toggle Errors</button>
   </div>
@@ -25,14 +18,6 @@ Trying out Form For
     {{#form-for model as |f|}}
 
       {{f.text 'bar' label='Bar'}}
-
-      {{f.text 'baz' label='Baz does not auto commit' autoCommit=false}}
-
-      {{f.textarea 'qux' label='Qux' autoCommit=false}}
-
-      {{#f.save}}
-        Create
-      {{/f.save}}
 
     {{/form-for}}
   </div>
