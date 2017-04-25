@@ -4,8 +4,9 @@ export default Ember.Controller.extend({
 
   _showingErrors: false,
 
+  foos: new Array(1000).fill(''),
+
   toggleErrors(){
-    this.toggleProperty('_showingErrors');
 
     if(this.get('_showingErrors')){
       this.set('model.errors.baz', []);
@@ -15,5 +16,7 @@ export default Ember.Controller.extend({
       this.set('model.errors.baz', ['An error', 'Another Error']);
       this.set('model.errors.qux', ['An error', 'Another Error']);
     }
+
+    this.toggleProperty('_showingErrors');
   }
 });

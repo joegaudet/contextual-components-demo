@@ -1,13 +1,17 @@
 Trying out Form For
 
-
 <div style="display: flex">
   <div style="flex: 1">
+
     {{#form-for model as |f|}}
 
-      {{#f.text 'bar' label='Bar' as |t| }}
-        {{t.control placeholder='Some Place Holder'}}
+      {{#f.text 'bar' label='Test' as |fi|}}
+        {{fi.control}}
       {{/f.text}}
+
+      {{f.text 'baz' label='Test' autoCommit=false}}
+
+      {{f.textarea 'qux' label='Test' autoCommit=false}}
 
     {{/form-for}}
 
@@ -17,7 +21,11 @@ Trying out Form For
   <div style="flex: 1">
     {{#form-for model as |f|}}
 
-      {{f.text 'bar' label='Bar'}}
+      {{f.text 'bar' label='Test'}}
+
+      {{f.text 'baz' label='Test'}}
+
+      {{f.textarea 'qux' label='Test'}}
 
     {{/form-for}}
   </div>
@@ -33,5 +41,4 @@ Trying out Form For
   </div>
 
 </div>
-
 
