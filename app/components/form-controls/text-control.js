@@ -5,6 +5,7 @@ export default Ember.Component.extend({
 
   value: null,
 
+  controlId: '',
 
   onClick(){},
 

@@ -1,0 +1,26 @@
+<div class="ui input {{if leftIcon 'left icon'}} {{if rightIcon 'right icon'}}">
+
+  {{#if leftIcon}}
+    <i class="icon {{leftIcon}}"></i>
+  {{/if}}
+
+  {{#if rightIcon}}
+    <i class="icon {{rightIcon}}"></i>
+  {{/if}}
+
+  <input
+    id="{{controlId}}"
+    value="{{value}}"
+    type="text"
+    placeholder="{{placeholder}}"
+    disabled={{isDisabled}}
+    readonly={{isReadonly}}
+    maxlength={{maxLength}}
+      onblur={{action onBlur}}
+    onfocus={{action onFocus}}
+      onclick={{action onClick}}
+    onKeyUp={{action onChange value='target.value'}}
+  />
+</div>
+
+

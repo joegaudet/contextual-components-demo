@@ -1,44 +1,52 @@
-Trying out Form For
+<div style="margin: 4em">
 
-<div style="display: flex">
-  <div style="flex: 1">
+  <h1>Trying out Form For</h1>
+  <div class="ui grid segment">
 
-    {{#form-for model as |f|}}
+    <div class="six wide column">
+      <h2>Form One</h2>
 
-      {{#f.text 'bar' label='Test' as |fi|}}
-        {{fi.control}}
-      {{/f.text}}
+      {{#form-for model
 
-      {{f.text 'baz' label='Test' autoCommit=false}}
+                  onSubmit=(action 'setErrors')
+                  onReset=(action 'resetErrors') as |f|}}
 
-      {{f.textarea 'qux' label='Test' autoCommit=false}}
+        {{f.field-for 'bar' using='text' label='No I AM A BAR' }}
 
-    {{/form-for}}
+        {{f.field-for 'baz' using='textarea' requireConfirm=true}}
 
-    <button {{action toggleErrors}}>Toggle Errors</button>
+        {{f.submit}}
+
+        {{f.reset}}
+
+      {{/form-for}}
+
+    </div>
+
+    <div class="six wide column">
+      <h2>Form Two</h2>
+
+      {{#form-for model as |f|}}
+
+        {{f.field-for 'bar' using='text' label='Bar'}}
+
+        {{f.field-for 'baz' using='textarea'}}
+
+        {{f.field-for 'qux' using='textarea'}}
+
+        {{f.field-for 'bar' 'qux' with-mapping=(hash qux='baz') label='Bar Baz' using='text-range' require-confirm=true}}
+
+      {{/form-for}}
+    </div>
+
+    <div class="four wide column">
+      <h3>Model Values</h3>
+      <ul>
+        <li>{{model.bar}}</li>
+        <li>{{model.baz}}</li>
+        <li>{{model.qux}}</li>
+      </ul>
+    </div>
+
   </div>
-
-  <div style="flex: 1">
-    {{#form-for model as |f|}}
-
-      {{f.text 'bar' label='Test'}}
-
-      {{f.text 'baz' label='Test'}}
-
-      {{f.textarea 'qux' label='Test'}}
-
-    {{/form-for}}
-  </div>
-
-  <div style="flex: 1">
-
-    <ul>
-      <li>{{model.bar}}</li>
-      <li>{{model.baz}}</li>
-      <li>{{model.qux}}</li>
-    </ul>
-
-  </div>
-
 </div>
-

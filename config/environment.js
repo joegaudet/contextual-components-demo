@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'contextual-components-demo',
     environment: environment,
@@ -16,7 +16,22 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+
+      'ember-form-for': {
+        fieldClasses: 'ui field',
+        formClasses: 'ui form',
+        buttonClasses: 'ui button',
+        submitButtonClasses: 'primary',
+        resetButtonClasses: 'secondary basic',
+
+
+        customErrorComponent: 'form-controls/error-label',
+        customCommitCancelComponent: 'form-controls/commit-buttons',
+        popOverClass: ''
+      }
+    },
+
+
   };
 
   if (environment === 'development') {
